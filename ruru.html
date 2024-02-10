@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('bgbaru.png') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better text visibility */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #e91e63;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #000; /* Text color on the card, adjust as needed */
+    }
+
+    #yesButton, #noButton, #secretButton {
+      background-color: #e91e63;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #yesButton:hover, #noButton:hover, #secretButton:hover {
+      background-color: #c2185b;
+    }
+
+    .corner-image {
+      width: 8vw; /* Adjust the vw unit as needed */
+      height: auto;
+      border-radius: 50%;
+    }
+
+    #top-left { position: absolute; top: 2vw; left: 2vw; }
+    #top-right { position: absolute; top: 2vw; right: 2vw; }
+    #bottom-left { position: absolute; bottom: 2vw; left: 2vw; }
+    #bottom-right { position: absolute; bottom: 2vw; right: 2vw; }
+
+    #secretMessage {
+      display: none;
+      margin-top: 20px;
+      color: #000;
+    }
+
+    /* Media queries for responsiveness */
+    @media (max-width: 768px) {
+      body {
+        background-size: 100% 100%; /* Adjusted background-size for full coverage on smaller screens */
+      }
+
+      #container {
+        max-width: 90%;
+      }
+
+      .corner-image {
+        width: 12vw;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <!-- No image tags inside the circles -->
+    <div id="message">
+      <p>Dear Veronica Nara Rubylint,</p>
+      <p>They say the 14th of February is a day for expressing love. I never agree because if that's true, then I've been through 255 '14th of February' with you. But anyway, </p>
+      <h1>Will You Be My Valentine?</h1>
+    </div>
+    <button id="yesButton" onclick="respondToProposal(true)">Yes, I'd love to!</button>
+    <button id="noButton" onclick="respondToProposal(false)">Sorry, not this time</button>
+    <button id="secretButton" onclick="revealSecretCode()">Secret Code</button>
+    <div id="secretMessage">You haven't said yes :(</div>
+  </div>
+
+  <script>
+    let hasSaidYes = false;
+
+    function respondToProposal(isAccepted) {
+      if (isAccepted) {
+        alert("Yay! I'm so happy! ❤️, now send me the secret key hihi");
+        hasSaidYes = true;
+        document.getElementById('secretMessage').style.display = 'none'; // Hide the message
+      } else {
+        // Array of possible responses when she says "No"
+        const responses = [
+        "eits, tidak bisa",
+          "Harus mau blee",
+          "Salah pencet kalii, coba yang satunya",
+          "affh iyh pilih 'no'?",
+          "Yes is the only correct answer"
+        ];
+
+        // Get a random index from the responses array
+        const randomIndex = Math.floor(Math.random() * responses.length);
+
+        // Display the randomly chosen response
+        alert(responses[randomIndex]);
+      }
+    }
+
+    function revealSecretCode() {
+      if (hasSaidYes) {
+        alert("secret key: iloveu3000hubertletshavedinneronvalentine");
+      } else {
+        document.getElementById('secretMessage').style.display = 'block'; // Show the message
+      }
+    }
+  </script>
+
+</body>
+</html>
